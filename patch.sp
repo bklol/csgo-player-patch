@@ -22,7 +22,7 @@ public Plugin myinfo = {
 
     name = "change player patches",
     author = "neko aka bklol",
-    description = "只有废物才拿别人的东西不知道谢谢",
+    description = "change player patches",
     version = "0.1",
     url = "https://github.com/bklol"
 };
@@ -31,12 +31,12 @@ public void OnPluginStart()
 {
 	RegConsoleCmd("sm_patch", Patch);
 	
-	TTPatch1 = RegClientCookie("TPslot1", "S", CookieAccess_Private);
-	TTPatch2 = RegClientCookie("TPslot2", "B", CookieAccess_Private);
-	TTPatch3 = RegClientCookie("TPslot3", "S", CookieAccess_Private);
-	CTPatch1 = RegClientCookie("CTPslot1", "B", CookieAccess_Private);
-	CTPatch2 = RegClientCookie("CTPslot2", "骂的就是", CookieAccess_Private);
-	CTPatch3 = RegClientCookie("CTPslot3", "你这个憨批", CookieAccess_Private);
+	TTPatch1 = RegClientCookie("TPslot1", "", CookieAccess_Private);
+	TTPatch2 = RegClientCookie("TPslot2", "", CookieAccess_Private);
+	TTPatch3 = RegClientCookie("TPslot3", "", CookieAccess_Private);
+	CTPatch1 = RegClientCookie("CTPslot1", "", CookieAccess_Private);
+	CTPatch2 = RegClientCookie("CTPslot2", "", CookieAccess_Private);
+	CTPatch3 = RegClientCookie("CTPslot3", "", CookieAccess_Private);
 	
 	PatchOffset = FindSendPropInfo("CCSPlayer", "m_vecPlayerPatchEconIndices");
 	
