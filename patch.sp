@@ -15,8 +15,31 @@ Handle CTPatch1;
 Handle CTPatch2;
 Handle CTPatch3;
 
-char iPnum[22][] = {"0","4550","4551","4552","4553","4554","4555","4556","4557","4558","4559","4560","4561","4562","4563","4564","4565","4566","4567","4568","4569","4570"};
-char iPname[22][] = {"移除当前布章","Crazy Banana","The Boss","Chicken Lover","Welcome to the Clutch","Dragon","Easy Peasy","Rage","Howl","Koi","Longevity","Wildfire","Vigilance","Bloodhound","Bravo","Breakout","Danger Zone","Hydra","Payback","Phoenix","Shattered Web","Vanguard"};
+char iPnum[51][] = 
+{
+	"0",
+	"4550","4551","4552","4553","4554","4555","4556",
+	"4557","4558","4559","4560","4561","4562","4563",
+	"4564","4565","4566","4567","4568","4569","4570",
+	"4589","4591","4592","4593","4594","4595","4596",
+	"4597","4598","4599","4600","4571","4572","4575",
+	"4576","4578","4579","4580","4581","4582","4583",
+	"4584","4585","4586","4587","4588","4697","4699",
+	"4700"
+};
+
+char iPname[51][] = 
+{
+	"移除布章",
+	"疯狂香蕉人","皇冠","爱鸡人士","命悬一线","龙的传人","柠檬汁","怒",
+	"咆哮","年年有鱼","剪纸GO","野火","警戒者","血猎","英勇",
+	"突围","头号特训","九头蛇","回馈","凤凰","裂网大行动","先锋",
+	"爱莉克斯","养料","弗弟岗人","猎头蟹符文","铜质 λ","生命值","联合军头盔",
+	"黑山基地","联合军","λ","17号城市","金·白银","金·黄金新星 ー I","金·黄金新星 ー 大师级",
+	"金·大师级守护者 ー I","金·大师级守护者 ー 精英","金·大师级守护者 ー 卓越 ★","金·传奇之鹰","金·传奇之鹰 ー 大师级 ★","金·无上之首席大师","金·全球精英 ★",
+	"金·大师级守护者 ー 卓越","金·传奇之鹰","金·传奇之鹰 ー 大师级","金·白银恶魔","金·无上大师","金·全球精英","金·大师级守护者",
+	"金·黄金新星"
+};
 
 public Plugin myinfo = {
 
@@ -76,7 +99,7 @@ void PatchMenu(int client)
 	int islot = g_Set[client];
 	Menu menu = new Menu(Handler_SMenu);
 	menu.SetTitle("玩家布章[槽位%i]",islot);
-	for(int i = 0;i < 22; ++i)
+	for(int i = 0;i < sizeof(iPnum); ++i)
 	{
 		menu.AddItem(iPnum[i],iPname[i]);
 	}
@@ -160,7 +183,7 @@ public Action iPlayerSpawn(Event iEvent, const char[] Name, bool DontBroadcast)
 	}
 }
 
-int GetPatchId(int client,int slot)
+stock int GetPatchId(int client,int slot)
 {
 	int iTeam = GetClientTeam(client);
 	char buffer[12];
@@ -204,7 +227,7 @@ int GetPatchId(int client,int slot)
 	return index;
 }
 
-void TY(int iClient, int slots ,int DefIndex)
+stock void TY(int iClient, int slots ,int DefIndex)
 {
 	if(!IsValidClient(iClient) || !IsPlayerAlive(iClient))
 		return;
